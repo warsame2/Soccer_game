@@ -80,49 +80,49 @@ public class League {
     	// add this in part 8
     	Game currGame = theGames[0]; 
 
-    	/*
+    	
     	Goal goal1 = new Goal(); 
     	goal1.thePlayer = currGame.homeTeam.playerArray[2]; 
     	goal1.theTeam = currGame.homeTeam; 
     	goal1.theTime = 55; 
     	
-    	Goal[] theGoals = {goal1}; 
-    	currGame.goals = theGoals; 
-    	
+    	//Goal[] theGoals = {goal1}; 
+    	//currGame.goals = theGoals; 
+    	/*
     	System.out.println("Goal scored after " + 
     			currGame.goals[0].theTime + " mins by " + 
     			currGame.goals[0].thePlayer.playerName + " of " + 
     			currGame.goals[0].theTeam.teamName); 
-    	
     	*/
+    	
     	// add this part 8
     	// run this 0/6
     	int numberOfGoals = (int)(Math.random() * 7); 
-    	System.out.println(numberOfGoals); 
+    	//System.out.println(numberOfGoals); 
     	
     	Goal[] theGoals = new Goal[numberOfGoals]; 
     	// add this after Delete System out print
     	
+
+    	currGame.goals = theGoals;
     	
-    	
-    	
-	for (Goal currGoal: currGame.goals) { 
+	 
+	GameUtils.addGameGoals(currGame);
+	
+	
+for (Goal currGoal: currGame.goals) { 
 		
 		System.out.println("Goal scored after " + 
 				 currGoal.theTime + " mins by " + 
 				 currGoal.thePlayer.playerName + 
-				 " of " + currGoal.theTeam.teamName);
-    		
-    	} 
-    	
-    	
-	currGame.goals = theGoals; 
-	
-	
-    	
+				 " of " + currGoal.theTeam.teamName);	
+    	} 	
 
-    	GameUtils.addGameGoals(currGame);
     	
+    	
+	
+	
+	
     
     	
     	// Delete this 
