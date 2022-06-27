@@ -1,0 +1,49 @@
+package utility;
+
+import java.util.*;
+
+import soccer.Player;
+
+public class PlayerDatabase {
+	
+	private ArrayList <Player> players; 
+	
+
+	
+	public PlayerDatabase(String authorList, String teamNames) { 
+		
+		
+		
+		StringTokenizer authorTokens =  new StringTokenizer(authorList, ","); 
+		
+		StringTokenizer teamNameTokens = new  StringTokenizer(teamNames,","); 
+	
+		
+		while (authorTokens.hasMoreTokens()) { 
+			 players.add(new Player(authorTokens.nextToken())); 
+			} 
+		
+		players = new ArrayList<Player>();
+		
+	}
+
+public Player[] getTeam(int numberOfPlayers) {
+		
+		Player[] teamPlayers = new Player[numberOfPlayers]; 
+				
+		for (int i = 0; i < numberOfPlayers; i++) { 
+			
+			int playerIndex = (int) (Math.random()*players.size()); 
+			teamPlayers[i] = players.get(playerIndex); 
+			
+			players.remove(playerIndex); 
+		} 
+		
+		
+		return teamPlayers; 
+	} 
+
+		
+
+	
+}
