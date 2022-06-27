@@ -1,0 +1,85 @@
+
+package soccer;
+
+import java.util.StringTokenizer;
+
+import utility.PlayerDatabase;
+
+public class League {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        League theLeague = new League();
+        
+       // Team[] theTeams = theLeague.createTeams();
+        
+        Team[] theTeams = theLeague.createTeams(); 
+        Game[] theGames = theLeague.createGames(theTeams);
+
+        PlayerDatabase playerDB = new 	PlayerDatabase();
+        
+        playerDB.getTeam(9);
+        
+        for (Game currGame : theGames){
+            currGame.playGame();
+            System.out.println(currGame.getDescription());
+        }
+        theLeague.showBestTeam(theTeams);  
+    }
+    
+    public Team[] createTeams (){
+       
+       
+    	 PlayerDatabase playerDB =new  PlayerDatabase();
+    	 
+    	 Team team1 = new Team("The Greens", playerDB.getTeam(3)); 
+    	 Team team2 = new Team("The Reds", playerDB.getTeam(3));
+		return null; 
+
+       
+
+      
+        
+        
+        
+       // StringTokenizer teamNameTokens = new  StringTokenizer(teamNames,",");
+        //Team[] theTeams = new Team[teamNameTokens.countTokens()]; 
+        
+       
+		
+
+
+        
+        
+      
+    }
+    
+    public Game[] createGames (Team[] theTeams){
+        Game theGame = new Game(theTeams[0], theTeams[1]);
+        Game theGame2 = new Game(theTeams[1], theTeams[0]);
+        Game[] theGames = {theGame, theGame2};
+        return theGames;
+    }       
+    
+    public void showBestTeam(Team[] theTeams){
+        Team currBestTeam = theTeams[0];
+        System.out.println("\nTeam Points");
+        for(Team currTeam : theTeams){
+            System.out.println(currTeam.getTeamName() + ":" + currTeam.getPointsTotal()+ ":" + currTeam.getGoalsTotal());
+            if (currTeam.getPointsTotal() > currBestTeam.getPointsTotal()) {
+                currBestTeam = currTeam;
+            }
+            else if (currTeam.getPointsTotal() == currBestTeam.getGoalsTotal()){
+                if (currTeam.getGoalsTotal() > currBestTeam.getGoalsTotal()) {
+                    currBestTeam = currTeam;
+                }
+            }
+        }    
+        System.out.println("The winner of the league is " + currBestTeam.getTeamName());
+        
+    }
+}
+    
